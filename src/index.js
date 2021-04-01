@@ -3,6 +3,7 @@ const express = require('express')
 const geocoding = require('../utils/geocode')
 const forecast = require('../utils/forecast')
 const app = express()
+const port = process.env.PORT || 3000
 const hbs = require('hbs')
 //app.com app.com/help, app.js/about
 //app.get('route', cb function(req,res))
@@ -38,7 +39,6 @@ app.get('/help', (req,res)=>{
         title:' help',
         msg:'this is the help page to use our app',
         name: 'Francine Diamond'
-
     })
 })
 app.get('/weather', (req,res)=>{
@@ -61,11 +61,7 @@ geocoding(req.query.adress, (error, {latitude,longitude,location}={/*default par
                 adress:req.query.adress
             })
         })
-    })
-
-    
-       
-    
+    })    
 })
 app.get('/products', (req,res)=>{
     if(!req.query.search){
@@ -93,6 +89,6 @@ app.get('*',(req,res)=>{
 })
 
 //listen to our port
-app.listen(3000, ()=>{
-    console.log('server is up on port 3000...')
+app.listen(port, ()=>{
+    console.log('server is up on port'+ port+ '...')
 })
