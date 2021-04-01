@@ -21,7 +21,8 @@ request({url, json: true}, (error,{body})=>{
 body.current.weather_descriptions[0] +
  ' It is currently ' + body.current.temperature + 
  ' degree outside. But it feels like it is '  + 
- body.current.feelslike + ' degree'
+ body.current.feelslike + ' degree' + 
+ ' the humidity is ' + body.current.humidity + '%'
             )
     }
 })
